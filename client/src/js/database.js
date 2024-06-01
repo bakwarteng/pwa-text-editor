@@ -1,10 +1,10 @@
 import { openDB } from "idb";
 
 const initdb = async () => {
-  const db = await openDB("jate", 1, {
+  openDB("jate", 1, {
     upgrade(db) {
       if (!db.objectStoreNames.contains("jate")) {
-        const store = db.createObjectStore("jate", {
+        db.createObjectStore("jate", {
           keyPath: "id",
           autoIncrement: true,
         });
@@ -15,12 +15,12 @@ const initdb = async () => {
 };
 
 // Method to add content to the database
-export const putDb = async (id, content) => {
+export const putDb = async (content) => {
   console.log("Content PUT to the database");
   const jate = await openDB("jate", 1);
   const trans = jate.transaction("jate", "readwrite");
   const store = trans.objectStore("jate");
-  await store.put({ id: id, jate: content });
+  await store.put({ id: 1, value: content });
 };
 
 // Method to get all content from the database
@@ -29,7 +29,7 @@ export const getDb = async () => {
   const jate = await openDB("jate", 1);
   const trans = jate.transaction("jate", "readonly");
   const store = trans.objectStore("jate");
-  const request = store.getAll();
+  const request = store.getOne(1);
   const result = await request;
   console.log("All content from the database:", result);
   return result;

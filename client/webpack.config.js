@@ -21,7 +21,7 @@ module.exports = () => {
       }),
       new InjectManifest({
         swSrc: "./src-sw.js",
-        swDest: "service-worker.js", // It's better to name the service worker file appropriately
+        swDest: "service-worker.js", 
       }),
       new WebpackPwaManifest({
         fingerprints:false,
@@ -37,7 +37,7 @@ module.exports = () => {
           {
             src: path.resolve("src/images/logo.png"),
             sizes: [96, 128, 192, 256, 384, 512],
-            destination: path.join("client", "logo"),
+            destination: path.join("assets", "icons"),
           },
         ],
       }),
