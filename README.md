@@ -1,4 +1,4 @@
-# Unit 19 PWA Challenge
+# PWA Text Editor
 
 ## Description
 This project is a Progressive Web Application (PWA). It implements functionality to meet the minimum requirements of a PWA, including using a web manifest, a service worker for offline functionality, and being installable.
